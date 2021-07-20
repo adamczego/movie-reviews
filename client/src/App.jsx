@@ -2,6 +2,7 @@ import { Route, Switch } from 'react-router-dom'
 
 import { useTheme, ThemeC } from './theme/useTheme'
 import { UserC, useUser } from './hooks/useUser'
+import { MoviesC, useMovies } from './hooks/useMovies'
 
 import GlobalStyles from './theme/GlobalStyles'
 
@@ -14,32 +15,34 @@ const App = () => {
 
   const user = useUser()
   const theme = useTheme()
+  const movies = useMovies()
 
 
   return (
     <>
       <UserC.Provider value = { user }>
         <ThemeC.Provider value = { theme }>
-          <GlobalStyles />
+          <MoviesC.Provider value = { movies }>
+            <GlobalStyles />
           
-          <Header />
+            <Header />
 
-          <Switch>
+            <Switch>
 
-            <Route exact path="/">
-              <Home />
-            </Route>
+              <Route exact path="/">
+                <Home />
+              </Route>
 
-            <Route exact path="/movies">
-              <Movies />
-            </Route>
+              <Route exact path="/movies">
+                <Movies />
+              </Route>
 
-            <Route exact path="/dashboard">
-              <Dashboard />
-            </Route>
+              <Route exact path="/dashboard">
+                <Dashboard />
+              </Route>
 
-          </Switch>
-
+            </Switch>
+          </MoviesC.Provider>
         </ThemeC.Provider>
       </UserC.Provider>
     </>

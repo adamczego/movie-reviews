@@ -34,7 +34,6 @@ const useUser = () => {
 
   const login = (idt) => {
     setUserData(jwtDecode(idt))
-    console.log(idt)
     setIsLoggedIn(true)
   }
 
@@ -44,9 +43,6 @@ const useUser = () => {
     setUserData(null)
   }
 
-  useEffect(() => {
-    console.log(userData)
-  }, [ userData, isLoggedIn ])
 
   useEffect(() => {
 
