@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken')
 const User = require('../models/UserModel')
 
 
@@ -18,7 +19,7 @@ exports.create = async (req, res, next) => {
 }
 
 exports.login = (req, res, next) => {
-  res.cookie('idt', res.locals.idt, {
+  res.cookie('idt', jwt.sign(res.locals.gUser, process.env.TOKEN_SECRET), {
     secure: false,
   })
 

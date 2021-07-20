@@ -55,7 +55,7 @@ exports.verifyUser = async (req, res, next) => {
 
   try {
     ticket = await oauth2Client.verifyIdToken({
-      idToken: idt,
+      idToken: jwt.verify(idt, process.env.TOKEN_SECRET),
       audience: '521887639788-hmnkmu73g67a182ml37hj5v1msm6jfm0.apps.googleusercontent.com',
     })
   } catch (e) {

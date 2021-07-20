@@ -34,6 +34,7 @@ const useUser = () => {
 
   const login = (idt) => {
     setUserData(jwtDecode(idt))
+    console.log(idt)
     setIsLoggedIn(true)
   }
 
