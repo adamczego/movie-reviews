@@ -11,8 +11,7 @@ router.get('/api/auth/g_login',
     LoginService.exists,
     LoginService.create,
   ],
-  LoginService.login,
-)
+  LoginService.login)
 
 
 router.get(`/api/auth/g_login_link`, GAuthService.getGLoginLink)

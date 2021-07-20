@@ -43,7 +43,6 @@ exports.getGUser = async (req, res, next) => {
 
 
 exports.verifyUser = async (req, res, next) => {
-
   const { idt } = req.cookies
 
   if ( idt === '' || idt === null || idt === undefined ) {
