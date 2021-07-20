@@ -1,0 +1,54 @@
+version: "3.9"
+
+services:
+#  movie_review_db_dev:
+#    container_name: movie_review_db_dev
+#    image: mongo
+#    restart: always
+#    env_file:
+#      - .env.dev
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
+#      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PW}
+#    volumes:
+#      - ${LOCAL_DB_DIR}:/data/db
+#    ports:
+#      - 27017:27017
+#    networks:
+#      - movie_review_app_dev
+
+  movie_review_server_dev:
+    container_name: movie_review_server_dev
+    build:
+      context: ./server
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./server/src:/usr/app/src
+    ports:
+      - ${SERVER_PORT}:8080
+    depends_on:
+      - movie_review_db_dev
+    env_file:
+      - .env.dev
+    networks:
+      - movie_review_app_dev
+
+  movie_review_client_dev:
+    container_name: movie_review_client_dev
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    env_file:
+      - .env.dev
+    volumes:
+      - ./client/src:/usr/app/src
+      - ./client/public:/usr/app/public
+    ports:
+      - ${CLIENT_PORT}:3000
+    depends_on:
+      - movie_review_server_dev
+    networks:
+      - movie_review_app_dev
+
+networks:
+  movie_review_app_dev:

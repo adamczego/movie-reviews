@@ -1,0 +1,25 @@
+{
+  "env": {
+    "commonjs": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+    "airbnb-base"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },
+  "rules": {
+    "semi": ["error", "never"],
+    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+    "no-multiple-empty-lines": "off",
+    "no-unused-vars": "warn",
+    "space-in-parens": "off",
+    "array-bracket-spacing": "off"
+  }
+}
