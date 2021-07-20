@@ -15,7 +15,7 @@
     "ecmaVersion": 2018
   },
   "rules": {
-    "linebreak-style": ["error", "windows"],
+    "linebreak-style": ["error", "unix"],
     "semi": ["error", "never"],
     "quotes": ["error", "single", { "allowTemplateLiterals": true }],
     "no-multiple-empty-lines": "off",

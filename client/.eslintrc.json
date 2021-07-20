@@ -45,7 +45,7 @@
         ]
       }
     ],
-    "linebreak-style": ["error", "windows"],
+    "linebreak-style": ["error", "unix"],
     "react/display-name": 1,
     "semi": ["error", "never"],
     "quotes": ["error", "single", { "allowTemplateLiterals": true }],
