@@ -11,29 +11,46 @@ const useMovies = () => {
   const { doFetch } = useFetch()
 
   const [ topRatedMovies, setTopRatedMovies ] = useState()
+  const [ nowPlayingMovies, setNowPlayingMovies ] = useState()
+
+  const [ currentSearchResults, setCurrentSearchResults ] = useState(null)
 
 
-  const getTopRatedMovies = async () => {
-    const movies = await doFetch({
-      endpoint: '/api/movies/top_rated',
-      method: 'GET',
-    })
+  const getTopRatedMovies = async (page) => doFetch({
+    endpoint: `/api/movies/top_rated?p=${page}`,
+    method: 'GET',
+  }).then(setTopRatedMovies)
 
-    setTopRatedMovies(movies.results)
-  }
+  const getNowPlayingMovies = async (page) => doFetch({
+    endpoint: `/api/movies/now_playing?p=${page}`,
+    method: 'GET',
+  }).then(setNowPlayingMovies)
 
+  const getMovieInfo = async (id) => doFetch({
+    endpoint: `/api/movies/movie/details/${id}`,
+    method: 'GET',
+  })
 
-  useEffect(() => {
-    console.log(topRatedMovies)
-  }, [ topRatedMovies ])
+  const searchMovie = (term, page) => doFetch({
+    endpoint: `/api/movies/search/title/${term}'?p=${page}`,
+    method: 'GET',
+  }).then((ms) => (ms.message ? null : setCurrentSearchResults(ms)))
+
 
   useEffect(() => {
     getTopRatedMovies()
+    getNowPlayingMovies()
+    searchMovie('a', 500)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ ])
 
 
   return {
     topRatedMovies,
+    nowPlayingMovies,
+    currentSearchResults,
+    getMovieInfo,
+    searchMovie,
   }
 
 }

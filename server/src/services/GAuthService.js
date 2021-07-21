@@ -46,25 +46,18 @@ exports.verifyUser = async (req, res, next) => {
   const { idt } = req.cookies
 
   if ( idt === '' || idt === null || idt === undefined ) {
-    return res.status(401).json({ msg: 'auth failed' })
+    res.status(401)
+    return next(new Error('not_authorized'))
   }
-
-
-  let ticket
 
   try {
-    ticket = await oauth2Client.verifyIdToken({
-      idToken: jwt.verify(idt, process.env.TOKEN_SECRET),
-      audience: '521887639788-hmnkmu73g67a182ml37hj5v1msm6jfm0.apps.googleusercontent.com',
-    })
+    res.locals.gUser = jwt.verify(idt, process.env.TOKEN_SECRET)
+    res.locals.id_token = oauth2Client.credentials.id_token
+    res.locals.access_token = oauth2Client.credentials.access_token
+    res.locals.refresh_token = oauth2Client.credentials.refresh_token
+    return next()
   } catch (e) {
-    return res.status(401).json({ msg: 'auth failed' })
+    res.status(401)
+    return next(e)
   }
-
-  res.locals.id_token = oauth2Client.credentials.id_token
-  res.locals.gUser = ticket.getPayload()
-  res.locals.access_token = oauth2Client.credentials.access_token
-  res.locals.refresh_token = oauth2Client.credentials.refresh_token
-
-  return next()
 }

@@ -28,6 +28,19 @@ app.use(express.json())
 app.use(router)
 
 
+app.use((req, error, res, next) => {
+  if ( res.statusCode === 404 ) {
+    return res.json({ msg: 'no_result' })
+  }
+
+  if ( res.statusCode === 401 ) {
+    return res.json({ msg: 'not_authorized' })
+  }
+
+  return res.status(500).send()
+})
+
+
 
 app.listen(port, () => {
   console.log(`app listening at ${host}:${port}`)

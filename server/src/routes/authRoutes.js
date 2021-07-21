@@ -5,13 +5,15 @@ const UserService = require('../services/UserService')
 
 
 
-router.get('/api/auth/g_login',
+router.get(
+  '/api/auth/g_login',
   [
     GAuthService.getGUser,
     LoginService.exists,
     LoginService.create,
   ],
-  LoginService.login)
+  LoginService.login,
+)
 
 
 router.get(`/api/auth/g_login_link`, GAuthService.getGLoginLink)

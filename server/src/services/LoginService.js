@@ -13,6 +13,7 @@ exports.create = async (req, res, next) => {
     res.locals.user = await User.create({
       g_id: res.locals.gUser.sub,
       refresh_token: res.locals.rt,
+      name: res.locals.gUser.name,
     })
   }
   next()

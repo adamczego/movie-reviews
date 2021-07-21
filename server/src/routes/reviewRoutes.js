@@ -6,8 +6,29 @@ const ReviewService = require('../services/ReviewService')
 
 
 router.get(
+  '/api/reviews/own',
+  [
+    GAuthService.verifyUser,
+  ],
+  ReviewService.findByUser,
+)
+
+
+router.post(
   '/api/reviews',
-  [ GAuthService.verifyUser ], ReviewService.findByQuery,
+  [
+    GAuthService.verifyUser,
+  ],
+  ReviewService.addReview,
+)
+
+
+router.get(
+  '/api/reviews/search/:term',
+  [
+    GAuthService.verifyUser,
+  ],
+  ReviewService.searchReview,
 )
 
 

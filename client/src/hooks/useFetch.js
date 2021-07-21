@@ -28,9 +28,6 @@ const useFetch = () => {
     return d
   }
 
-  useEffect(() => {
-
-  }, [ data ])
 
   return {
     data,
