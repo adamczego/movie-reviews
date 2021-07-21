@@ -15,14 +15,17 @@
     "moviedb-promise": "^3.1.9"
   },
   "scripts": {
-    "dev": "nodemon -L src/server.js",
-    "start": "node src/server.js"
+    "dev": "nodemon -L src/start.js",
+    "start": "node src/start.js"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "eslint": "^6.5.1",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.12",
+    "jest": "^27.0.6",
+    "mongodb-memory-server": "^7.2.1",
+    "supertest": "^6.1.3"
   }
 }

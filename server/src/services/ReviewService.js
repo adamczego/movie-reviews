@@ -11,17 +11,30 @@ exports.findByUser = async (req, res, next) => Review
   })
 
 
-exports.addReview = async (req, res, next) => Review
-  .create({
-    body: req.body.review.body,
-    author: req.body.review.author,
-    movie_id: req.body.review.movieId,
-  })
-  .then((r) => res.json(r))
-  .catch((e) => {
-    res.status(500)
-    return next(e)
-  })
+exports.addReview = async (req, res, next) => {
+
+  // const newReview = new Review({
+  //   body: req.body.review.body,
+  //   author: req.body.review.author,
+  //   movie_id: req.body.review.movieId,
+  //   movie_title: req.body.review.movieTitle,
+  // })
+  //
+  // const savedReview = newReview.save()
+  // res.json(savedReview)
+  return Review
+    .create({
+      body: req.body.review.body,
+      author: req.body.review.author,
+      movie_id: req.body.review.movieId,
+      movie_title: req.body.review.movieTitle,
+    })
+    .then((r) => res.json(r))
+    .catch((e) => {
+      res.status(500)
+      return next(e)
+    })
+}
 
 exports.searchReview = async (req, res, next) => {
   // todo:
