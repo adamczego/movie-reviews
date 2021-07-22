@@ -11,7 +11,8 @@ import useFetch from './useFetch'
 
 const useUser = () => {
 
-  const h = useHistory()
+  // const h = useHistory()
+  useHistory()
 
   const [ userData, setUserData ] = useState()
   const [ isLoggedIn, setIsLoggedIn ] = useState(false)

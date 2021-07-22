@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 const ReviewSchema = new mongoose.Schema({
   body: {
     type: String,
-    required: 'no_review_body',
+    // required: 'no_review_body',
   },
   author: {
     type: Number,
@@ -25,6 +25,10 @@ const ReviewSchema = new mongoose.Schema({
     type: String,
     required: 'no_movie_title',
   },
+  rate : {
+    type: String,
+    required: 'no_movie_rate',
+  }
 })
 
 

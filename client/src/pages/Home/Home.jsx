@@ -17,17 +17,17 @@ const Home = () => {
   return (
     <div>
       <H1>
-        { 
-          isLoggedIn 
+        {
+          isLoggedIn
             ? (
               <>
                 <p>Hi, youre in now</p>
-                <button type="button" onClick={() => goToDashboard() }>Dashboard</button>
-                <button type="button" onClick={() => goToMovies() }>Movies</button>
+                <button type="button" onClick={() => goToDashboard()}>Dashboard</button>
+                <button type="button" onClick={() => goToMovies()}>Movies</button>
               </>
             )
             : 'Youre logged out'
-         }
+        }
       </H1>
     </div>
   )

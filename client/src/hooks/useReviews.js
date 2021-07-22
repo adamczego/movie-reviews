@@ -15,11 +15,12 @@ const useReviews = (user) => {
     author: '108119665129465060839',
     rate: 5,
     movieId: '379686',
+    movieTitle: 'Title',
   })
 
   const [ userReviews, setUserReviews ] = useState(null)
 
-  const [ searchedReviews, setSearchedReviews ] = useState(null)
+  // const [ searchedReviews, setSearchedReviews ] = useState(null)
 
 
   const loadUserReviews = async () => doFetch({
@@ -33,9 +34,9 @@ const useReviews = (user) => {
     body: { review: reviewData },
   }).then(() => loadUserReviews())
 
-  const searchReviews = ({ prop, val }) => {
+  // const searchReviews = ({ prop, val }) => {
 
-  }
+  // }
 
   // for handling review input change
   const handleReviewDataChange = (e) => setReviewData({

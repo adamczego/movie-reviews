@@ -7,7 +7,8 @@ import { ReviewsC, useReviews } from './hooks/useReviews'
 
 import GlobalStyles from './theme/GlobalStyles'
 
-import { Dashboard, Home, Movies } from './pages'
+// import { Dashboard, Home, Movies } from './pages'
+import { Dashboard, Movies } from './pages'
 import Header from './components/Header/Header'
 import './App.css'
 
@@ -22,12 +23,12 @@ const App = () => {
 
   return (
     <>
-      <UserC.Provider value = { user }>
-        <ThemeC.Provider value = { theme }>
-          <MoviesC.Provider value = { movies }>
-            <ReviewsC.Provider value = { reviews }>
+      <UserC.Provider value={user}>
+        <ThemeC.Provider value={theme}>
+          <MoviesC.Provider value={movies}>
+            <ReviewsC.Provider value={reviews}>
               <GlobalStyles />
-          
+
               <Header />
 
               <Switch>

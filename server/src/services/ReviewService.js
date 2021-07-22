@@ -22,15 +22,29 @@ exports.addReview = async (req, res, next) => {
   //
   // const savedReview = newReview.save()
   // res.json(savedReview)
+  //console.log(req.body);
   return Review
-    .create({
-      body: req.body.review.body,
-      author: req.body.review.author,
-      movie_id: req.body.review.movieId,
-      movie_title: req.body.review.movieTitle,
-    })
+    //.create({
+    .findOneAndUpdate(
+      {
+        author: req.body.review.author,
+        movie_id: req.body.review.movieID,
+      },
+      {
+        body: req.body.review.body || "",
+        //author: req.body.review.author,
+        rate:  req.body.review.rate,
+        //movie_id: req.body.review.movieID,
+        movie_title: req.body.review.movieTitle,
+      },
+      {
+        new: true,
+        upsert: true // Make this update into an upsert
+      }
+    )
     .then((r) => res.json(r))
     .catch((e) => {
+      console.log(e)
       res.status(500)
       return next(e)
     })
