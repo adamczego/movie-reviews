@@ -17,7 +17,6 @@ const MovieList = ({ movies, title, loadNextPage }) => (
           <MovieCard key={m.id} movie={m} />
         ))
       }
-      {/*<LoadMoreButton onClick = { (...ctx) => loadNextPage(ctx) }>load more</LoadMoreButton>*/}
     </MovieListWrapper>
   </>
 )
