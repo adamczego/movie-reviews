@@ -6,7 +6,7 @@ services:
   - docker
 # script:
 before_install:
-  - cd client && yarn install && npm run build
+  - cd client && npm install --legacy-peer-deps && npm run build
   - docker build . -t movie_review_client
   - cd .. && cd server && docker build . -t movie_review_server
   - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
@@ -23,5 +23,3 @@ after_success:
   # - curl -k -L https://files.sloppy.io/sloppy-`uname -s`-`uname -m` > sloppy
   - chmod +x sloppy
   - ./sloppy change -v docker_image:"$DOCKER_USER/movie_review_client" -v domain:"ccmovieclient.sloppy.zone" sloppyclient.json
-
-  # --legacy-peer-deps
