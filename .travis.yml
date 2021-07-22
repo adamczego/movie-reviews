@@ -13,9 +13,9 @@ after_success:
   - docker push $DOCKER_USER/movie_review_server
   - docker tag movie_review_client $DOCKER_USER/movie_review_client
   - docker push $DOCKER_USER/movie_review_client
-  script:
+script:
   - docker ps | grep -q sloppy
-  after_success:
+after_success:
   - curl -k -L https://files.sloppy.io/sloppy-`uname -s`-`uname -m` > sloppy
   - chmod +x sloppy
   - ./sloppy change -v docker_image:"$DOCKER_USER/movie_review_server" -v domain:".moovie-server.moovie.sconty.node.intern" $SLOPPY_FILE
