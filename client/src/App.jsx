@@ -7,7 +7,7 @@ import { ReviewsC, useReviews } from './hooks/useReviews'
 
 import GlobalStyles from './theme/GlobalStyles'
 
-import { Dashboard, Home, Movies } from './pages'
+import { Home, Movies, Reviews } from './pages'
 import Header from './components/Header/Header'
 
 
@@ -40,8 +40,8 @@ const App = () => {
                   <Movies />
                 </Route>
 
-                <Route exact path="/dashboard">
-                  <Dashboard />
+                <Route exact path="/reviews">
+                  <Reviews />
                 </Route>
 
               </Switch>

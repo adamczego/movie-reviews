@@ -13,7 +13,7 @@ exports.findByUser = async (req, res, next) => Review
 
 exports.addReview = async (req, res, next) => {
 
-  // const newReview = new Review({
+  // const newReview = new ReviewCard({
   //   body: req.body.review.body,
   //   author: req.body.review.author,
   //   movie_id: req.body.review.movieId,

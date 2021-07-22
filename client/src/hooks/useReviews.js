@@ -54,6 +54,7 @@ const useReviews = (user) => {
   return {
     reviewData,
     userReviews,
+    searchedReviews,
     saveReview,
     handleReviewDataChange,
   }

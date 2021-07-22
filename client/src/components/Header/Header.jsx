@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { User } from '../../hooks/useUser'
 
@@ -12,24 +13,35 @@ const Header = () => {
   return (
     <HeaderWrapper>
 
-      <Logo>
-        Movie review app
-      </Logo>
+      <Info>
 
-      <UserInfo>
+        <Logo>
+          Movie review app
+        </Logo>
 
-        <UserNameDisplay>{ userData?.name }</UserNameDisplay>
-        <UserImageDisplay src = { userData?.picture } />
+        <UserInfo>
 
-      </UserInfo>
+          <UserNameDisplay>{ userData?.name }</UserNameDisplay>
+          <UserImageDisplay src = { userData?.picture } />
 
-      <LogInOutButton onClick = { logout }>
-        {
+        </UserInfo>
+
+        <LogInOutButton onClick = { logout }>
+          {
           isLoggedIn ? 'logout' : <a href = { loginLink }>login</a>
         }
-      </LogInOutButton>
+        </LogInOutButton>
 
+      </Info>
 
+      <Nav>
+        <NavLink>
+          <Link to = "/movies">movies</Link>
+        </NavLink>
+        <NavLink>
+          <Link to = "/reviews">reviews</Link>
+        </NavLink>
+      </Nav>
 
     </HeaderWrapper>
   )
@@ -39,8 +51,24 @@ const Header = () => {
 
 const HeaderWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   margin: 2rem;
-  align-content: center;
+  //align-content: center;
+`
+
+const Nav = styled.nav`
+  margin-top: 4rem;
+`
+
+const NavLink = styled.span`
+  font-size: 3.5rem;
+  font-weight: 400;
+  margin-right: 1.5rem;
+`
+
+const Info = styled.div`
+  display: flex;
+  align-items: center;
 `
 
 const Logo = styled.span`

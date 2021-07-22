@@ -19,7 +19,10 @@ const useMovies = () => {
   const getTopRatedMovies = async (page) => doFetch({
     endpoint: `/api/movies/top_rated?p=${page}`,
     method: 'GET',
-  }).then(setTopRatedMovies)
+  }).then((ms) => {
+    // console.log(ms)
+    setTopRatedMovies(ms)
+  })
 
   const getNowPlayingMovies = async (page) => doFetch({
     endpoint: `/api/movies/now_playing?p=${page}`,
@@ -37,10 +40,10 @@ const useMovies = () => {
   }).then((ms) => (ms.message ? null : setCurrentSearchResults(ms)))
 
 
+
   useEffect(() => {
     getTopRatedMovies()
     getNowPlayingMovies()
-    searchMovie('a', 500)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ ])
 

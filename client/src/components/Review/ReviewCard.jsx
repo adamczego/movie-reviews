@@ -2,14 +2,14 @@ import styled from 'styled-components'
 
 
 
-const MovieCard = ({ movie }) => (
-  <MovieCardWrapper>
+const ReviewCard = ({ movie }) => (
+  <ReviewCardWrapper>
     <Poster src = { `https://image.tmdb.org/t/p/w500${movie.poster_path}` } />
     <MovieTitle>{movie?.title}</MovieTitle>
-  </MovieCardWrapper>
+  </ReviewCardWrapper>
 )
 
-const MovieCardWrapper = styled.div`
+const ReviewCardWrapper = styled.div`
   max-width: 40rem;
   max-height: 30vh;
   margin-right: 5rem;
@@ -30,4 +30,4 @@ const MovieTitle = styled.h3`
 `
 
 
-export default MovieCard
+export default ReviewCard

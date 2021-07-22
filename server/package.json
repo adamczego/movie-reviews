@@ -1,7 +1,7 @@
 {
   "name": "reflect-server",
   "version": "1.0.0",
-  "main": "src/server.js",
+  "main": "src/start.js",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.21.1",
