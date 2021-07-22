@@ -5,7 +5,8 @@ sudo: required
 services:
   - docker
 script:
-  - docker compose up
+  - cd client && docker build . -t movie_review_client
+  - cd server && docker build . -t movie_review_server
 after_success:
   - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
   - docker tag movie_review_server $DOCKER_USER/movie_review_server
