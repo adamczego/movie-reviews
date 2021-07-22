@@ -6,6 +6,7 @@ services:
   - docker
 # script:
 before_install:
+  - export CI=false
   - cd client && yarn install
   - yarn build
   - docker build . -t movie_review_client
