@@ -13,7 +13,7 @@ before_install:
   - cd ..
   - curl -k -L https://files.sloppy.io/sloppy-`uname -s`-`uname -m` > sloppy
   - chmod +x sloppy
-  - ./sloppy change -v docker_image:"$DOCKER_USER/movie_review_server" -v domain:"ccmovieserver.sloppy.zone" sloppyserver.json
+  - ./sloppy change -v docker_image:"$DOCKER_USER/movie_review_server" -v domain:"ccmovieserver.sloppy.zone" sloppy.json
 
   - export CI=false
   - cd client && yarn install
@@ -22,4 +22,4 @@ before_install:
   - docker tag movie_review_client $DOCKER_USER/movie_review_client
   - docker push $DOCKER_USER/movie_review_client
   - cd ..
-  - ./sloppy change -v docker_image:"$DOCKER_USER/movie_review_client" -v domain:"ccmovieclient.sloppy.zone" sloppyclient.json
+  - ./sloppy change -v docker_image:"$DOCKER_USER/movie_review_client" -v domain:"ccmovieclient.sloppy.zone" sloppy.json

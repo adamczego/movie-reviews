@@ -19,6 +19,24 @@
                     ]
                 }
             ]
+        },  {
+            "id": "moovie-client",
+            "apps": [
+                {
+                    "id": "nginx",
+                    "domain": {
+                        "uri": "ccmovieclient.sloppy.zone"
+                    },
+                    "mem": 256,
+                    "image": "darabosg/movie_review_client",
+                    "instances": 1,
+                    "port_mappings": [
+                        {
+                            "container_port": 80
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
