@@ -41,6 +41,10 @@ const useMovies = () => {
     getTopRatedMovies()
     getNowPlayingMovies()
     searchMovie('a', 500)
+
+    console.log('topRatedMovies=', topRatedMovies)
+    console.log('nowPlayingMovies=', nowPlayingMovies)
+    console.log('currentSearchResults=', currentSearchResults)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ ])
 

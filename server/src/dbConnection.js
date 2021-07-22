@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-
+ 
 
 const conString = process.env.DB_URI
 const user = process.env.MONGO_USER
@@ -14,8 +14,8 @@ const connectDB = () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false,
-      user,
-      pass,
+     // user,
+     // pass,
     },
   )
 }

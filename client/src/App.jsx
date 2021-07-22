@@ -9,7 +9,7 @@ import GlobalStyles from './theme/GlobalStyles'
 
 import { Dashboard, Home, Movies } from './pages'
 import Header from './components/Header/Header'
-
+import './App.css'
 
 
 const App = () => {
@@ -33,7 +33,7 @@ const App = () => {
               <Switch>
 
                 <Route exact path="/">
-                  <Home />
+                  <Dashboard />
                 </Route>
 
                 <Route exact path="/movies">

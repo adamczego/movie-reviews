@@ -9,7 +9,10 @@ const Movies = () => {
 
   const { topRatedMovies } = M()
 
-
+  console.log('Movies topRatedMovies=', topRatedMovies)
+  if (!topRatedMovies) {
+    return (' no movies')
+  } 
   return (
     <div>
       <H1>
@@ -17,11 +20,11 @@ const Movies = () => {
       </H1>
       <MovieList
         title = "Top rated movies"
-        movies = { topRatedMovies }
+        movies = { topRatedMovies.results }
       />
     </div>
   )
-
+  
 }
 
 

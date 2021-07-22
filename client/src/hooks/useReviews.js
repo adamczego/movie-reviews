@@ -13,6 +13,7 @@ const useReviews = (user) => {
   const [ reviewData, setReviewData ] = useState({
     body: 'here is some review for a movie',
     author: '108119665129465060839',
+    rate: 5,
     movieId: '379686',
   })
 
@@ -53,6 +54,7 @@ const useReviews = (user) => {
 
   return {
     reviewData,
+    setReviewData,
     userReviews,
     saveReview,
     handleReviewDataChange,

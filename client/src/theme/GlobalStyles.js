@@ -21,7 +21,7 @@ const Reset = css`
   ${reset}
   ${normalize}
   
-  button {
+  btn_login {
     border: none;
     margin: 0;
     padding: 0;

@@ -6,11 +6,13 @@ const MovieList = ({ movies, title } ) => (
     <H1>
       { title }
     </H1>
-    {
-      movies?.map((m) => (
-        <MovieCard key = { m.id } movie = { m } />
-      ))
-    }
+    <div className="movie-flex">
+      {
+        movies?.map((m) => (
+          <MovieCard key = { m.id } movie = { m } />
+        ))
+      }
+    </div>
   </div>
 )
 
