@@ -1,0 +1,24 @@
+{
+  "project": "moovie",
+    "services": [
+        {
+            "id": "moovie-server",
+            "apps": [
+                {
+                    "id": "node",
+                    "domain": {
+                        "uri": ".moovie-server.moovie.sconty.node.intern"
+                    },
+                    "mem": 256,
+                    "image": "darabosg/movie_review_server",
+                    "instances": 1,
+                    "port_mappings": [
+                        {
+                            "container_port": 8080
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
