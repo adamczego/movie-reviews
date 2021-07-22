@@ -7,7 +7,7 @@
                 {
                     "id": "node",
                     "domain": {
-                        "uri": ".moovie-server.moovie.sconty.node.intern"
+                        "uri": "ccmovieserver.sloppy.zone"
                     },
                     "mem": 256,
                     "image": "darabosg/movie_review_server",
