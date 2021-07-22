@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN npm install && npm build
+RUN yarn install && yarn build
 
 
 FROM nginx:alpine
