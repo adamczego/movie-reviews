@@ -8,7 +8,7 @@ script:
   - docker compose up
 after_success:
   - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-  - docker tag back $DOCKER_USER/movie_review_server
+  - docker tag back movie_review_server $DOCKER_USER/movie_review_server
   - docker push $DOCKER_USER/movie_review_server
-  - docker tag back $DOCKER_USER/movie_review_client
+  - docker tag back movie_review_client $DOCKER_USER/movie_review_client
   - docker push $DOCKER_USER/movie_review_client
