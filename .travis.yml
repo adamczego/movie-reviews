@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - "14"
+sudo: required
+services:
+  - docker
+before_script:
+  - npm install
+script:
+  - docker compose up
+after_success:
+  - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+  - docker tag back $DOCKER_USER/movie_review_server
+  - docker push $DOCKER_USER/back
+  - docker tag back $DOCKER_USER/movie_review_client
+  - docker push $DOCKER_USER/movie_review_client
