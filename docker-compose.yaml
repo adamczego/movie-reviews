@@ -5,9 +5,10 @@ services:
   movie_review_server:
     container_name: movie_review_server
     env_file: .env
-    build:
-      context: ./server
-      dockerfile: Dockerfile
+    image: darabosg/movie_review_server
+    # build:
+    #   context: ./server
+    #   dockerfile: Dockerfile
     ports:
       - ${SERVER_PORT}:${SERVER_PORT}
     networks:
@@ -16,9 +17,10 @@ services:
   movie_review_client:
     container_name: movie_review_client
     env_file: .env
-    build:
-      context: ./client
-      dockerfile: Dockerfile
+    image: darabosg/movie_review_client:
+    # build:
+    #   context: ./client
+    #   dockerfile: Dockerfile
     ports:
       - ${CLIENT_PORT}:80
     depends_on:
