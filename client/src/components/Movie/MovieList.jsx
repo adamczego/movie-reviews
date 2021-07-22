@@ -8,8 +8,9 @@ const MovieList = ({ movies, title } ) => (
     </H1>
     <div className="movie-flex">
       {
-        movies?.map((m) => (
-          <MovieCard key = { m.id } movie = { m } />
+        movies?.map((m, i) => (
+          // eslint disable next line
+          <MovieCard key = { m.id + i.toString() } movie = { m } />
         ))
       }
     </div>

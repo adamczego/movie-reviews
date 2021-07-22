@@ -14,9 +14,24 @@ exports.findByUser = async (req, res, next) =>  {
   })
 
 }
+exports.getAllReviews = async (req, res, next) =>  {
+  
+  console.log('all reviews session user:',req.locals)
+  Review
+  .find({ })
+  .then((x) => res.json({results:x}) )
+  .catch((e) => {
+    res.status(404)
+    return next(e)
+  })
+
+}
+
+
 
 exports.addReview = async (req, res, next) => {
 
+  console.log('save review:', req.body.review)
   // const newReview = new Review({
   //   body: req.body.review.body,
   //   author: req.body.review.author,
@@ -36,10 +51,12 @@ exports.addReview = async (req, res, next) => {
       },
       {
         body: req.body.review.body || "",
-        //author: req.body.review.author,
-        rate:  req.body.review.rate,
-        //movie_id: req.body.review.movieID,
-        movie_title: req.body.review.movieTitle,
+        author: req.body.review.author,
+        rate: req.body.review.rate,
+        author_name: req.body.review.author_name,
+        poster_path: req.body.review.poster_path,
+        movie_id: req.body.review.movieID,
+        title: req.body.review.movieTitle,
       },
       {
         new: true,

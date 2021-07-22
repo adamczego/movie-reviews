@@ -12,6 +12,11 @@ const ReviewSchema = new mongoose.Schema({
     required: 'no_author',
     ref: 'User',
   },
+  author_name: {
+    type: String,
+    required: 'no_author_name',
+    ref: 'User',
+  },
   created_at: {
     type: Date,
     default: Date.now,
@@ -21,9 +26,13 @@ const ReviewSchema = new mongoose.Schema({
     type: Number,
     required: 'no_movie_id',
   },
-  movie_title: {
+  title: {
     type: String,
     required: 'no_movie_title',
+  },
+  poster_path: {
+    type: String,
+    required: 'no_movie_poster_path',
   },
   rate : {
     type: String,

@@ -16,6 +16,7 @@ const useReviews = (user) => {
     rate: 5,
     movieId: '379686',
     movieTitle: 'Title',
+    poster_path: 'path_to_movie_poster_image',
   })
 
   const [ userReviews, setUserReviews ] = useState(null)
@@ -24,7 +25,7 @@ const useReviews = (user) => {
 
 
   const loadUserReviews = async () => doFetch({
-    endpoint: '/api/reviews/own',
+    endpoint: '/api/reviews/',
     method: 'GET',
   }).then((rs) => (rs.msg ? null : setUserReviews(rs)))
 

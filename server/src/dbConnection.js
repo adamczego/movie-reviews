@@ -24,7 +24,7 @@ const connectDB = () => {
 const db = mongoose.connection
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
-db.on('connected', () => console.log('Connected to Database'))
+db.on('connected', () => console.log('Connected to Database:', conString))
 
 
 module.exports = {

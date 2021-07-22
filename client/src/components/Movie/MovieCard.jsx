@@ -1,8 +1,5 @@
-// import { useState, useEffect } from 'react'
+
 import { useState } from 'react'
-// import { Movies, MoviesC } from '../../hooks/useMovies'
-// import { useReviews as UR } from '../../hooks/useReviews'
-// import { UserC, User } from '../../hooks/useUser'
 import { User } from '../../hooks/useUser'
 
 const MovieCard = ({ movie }) => {
@@ -12,27 +9,29 @@ const MovieCard = ({ movie }) => {
   const [reviewtext, setReviewtext] = useState('')
   const [rateNo, setRateNo] = useState(0)
   const [isLoading, setIsLoading] = useState(null)
-  const [userID, setUserID] = useState(User().userData?.sub) // honnan szedjem a userID ?
-
-  /* console.log('user=', User()) */
+  const [author, setAuthor] = useState( { id: User().userData?.sub, name: User().userData?.name } ) 
+  
+  console.log('rate1=', rate1)
 
   const RateMovie = () => {
-    const saveRate = async (movieID, movieTitle) => {
-
+    const saveRate = async () => {
+      console.log('rate1=', rate1)
       setIsLoading(true)
 
       const review = {
         body: reviewtext,
-        author: userID,
+        author: author.id,  
+        author_name: author.name,
         rate: rateNo,
-        movieID,
-        movieTitle,
+        movieID: rate1.movieID,
+        poster_path: rate1.poster_path,
+        movieTitle: rate1.movieTitle,
       }
 
-      // console.log('review=', review)
+      console.log('review=', review)
 
       const endpoint = '/api/reviews'
-      // const res = await fetch(
+   
       await fetch(
         `http://localhost:8080${endpoint}`,
         {
@@ -46,8 +45,6 @@ const MovieCard = ({ movie }) => {
         },
       )
 
-      // const d = await res.json()
-      // console.log('d=', d)
       setIsLoading(false)
       setReviewtext('')
       setRateNo(0)
@@ -57,7 +54,8 @@ const MovieCard = ({ movie }) => {
     // const handlChange = (e) => {
 
     // }
-
+    const generateKey = (pre) => `${pre}_${new Date().getTime()}`
+ 
     return (
       <>
    
@@ -65,10 +63,11 @@ const MovieCard = ({ movie }) => {
           rate1
             ? (
               <div className="rate-window">
-                <textarea type="text" id="review" name="review" value={reviewtext} onChange={(e) => setReviewtext(e.target.value)} placeholder="please enter your review..." />
+                <textarea key={generateKey()} type="text" id="review" name="review" value={reviewtext} onChange={(e) => setReviewtext(e.target.value)} placeholder="please enter your review..." />
                 <div className="slidecontainer">
                   <input 
                     className="rate" 
+                    key={generateKey()}
                     id="rate"
                     type="range" 
                     min="1" 
@@ -82,8 +81,8 @@ const MovieCard = ({ movie }) => {
         }
         {
           rate1
-            ? <button type="button" onClick={() => saveRate(movie.id, movie.title)}>{isLoading ? '...' : 'Save'}</button>
-            : <button type="button" onClick={() => setRate1(movie.id, movie.title)}>Rate</button>
+            ? <button type="button" onClick={() => saveRate()}>{isLoading ? '...' : 'Save'}</button>
+            : <button type="button" onClick={() => setRate1( { movieID: movie.id, movieTitle: movie.title, poster_path: movie?.poster_path } )}>Rate</button>
         }
       </>
     )
@@ -95,7 +94,8 @@ const MovieCard = ({ movie }) => {
 
       <img src={`https://image.tmdb.org/t/p/w185/${movie?.poster_path}`} alt="poster" />
       <h4 className="movie-title">{movie?.title}</h4>
-
+      {movie?.body}
+      {movie?.author_name}
 
       {User().isLoggedIn
         ? <RateMovie />

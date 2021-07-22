@@ -13,6 +13,13 @@ router.get(
   ReviewService.findByUser,
 )
 
+router.get(
+  '/api/reviews/',
+/*   [
+    GAuthService.verifyUser,
+  ], */
+  ReviewService.getAllReviews,
+)
 
 router.post(
   '/api/reviews',

@@ -3,11 +3,11 @@ import Movies from '../Movies/Movies'
 
 const Dashboard = () => {
 
-  const [ show, setShow ] = useState('topRated')
+  const [ show, setShow ] = useState('Top rated movies')
 
 
   return (
-    <div classNam="dashboard">
+    <div className="dashboard">
       <div className="nav">
         <button type="button" onClick={ () => setShow('Top rated movies') }>Top Rated Movies</button>
         <button type="button" onClick={ () => setShow('Newest movies') }>Newest Movies</button>  

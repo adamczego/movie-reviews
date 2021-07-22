@@ -1,3 +1,4 @@
+
 import { Movies as M } from '../../hooks/useMovies'
 
 import { H1 } from '../../components/styledComps/Typography'
@@ -9,7 +10,13 @@ const Movies = ( { whatWeShow } ) => {
 
   const { topRatedMovies } = M()
   const { nowPlayingMovies } = M()
+  const { allReviews } = M()
   let data = null
+
+  console.log('topRatedMovies=', topRatedMovies)
+  console.log('allReviews=', allReviews)
+  console.log('nowPlayingMovies=', nowPlayingMovies)
+  // console.log('currentSearchResults=', currentSearchResults)
 
   if ( whatWeShow === 'Top rated movies' ) {
     data = topRatedMovies?.results
@@ -20,7 +27,8 @@ const Movies = ( { whatWeShow } ) => {
     // miért nincs adat ?
   }
   if ( whatWeShow === 'Reviews' ) {
-    data = nowPlayingMovies?.results 
+    data = allReviews?.results
+    // nowPlayingMovies?.results 
     // miért nincs adat ?
   }
 

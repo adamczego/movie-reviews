@@ -37,13 +37,11 @@ const App = () => {
                   <Dashboard />
                 </Route>
 
-                <Route exact path="/movies">
-                  <Movies />
-                </Route>
+                <Route exact path="/movies" render = { () => <Movies /> } />
+                 
 
-                <Route exact path="/dashboard">
-                  <Dashboard />
-                </Route>
+                <Route exact path="/dashboard" render= { () => <Dashboard /> } />
+               
 
               </Switch>
             </ReviewsC.Provider>
