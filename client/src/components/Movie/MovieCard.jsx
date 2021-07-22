@@ -60,21 +60,30 @@ const MovieCard = ({ movie }) => {
 
     return (
       <>
-        {
-          rate1
-            ? <button type="button" onClick={() => saveRate(movie.id, movie.title)}>Save</button>
-            : <button type="button" onClick={() => setRate1(movie.id, movie.title)}>Rate</button>
-        }
+   
         {
           rate1
             ? (
               <div className="rate-window">
-                <input type="text" id="body" name="review" value={reviewtext} onChange={(e) => setReviewtext(e.target.value)} placeholder="please enter your review..." />
-                <input type="text" id="rate" name="rate" value={rateNo} onChange={(e) => setRateNo(e.target.value)} placeholder="rate" />
-
+                <textarea type="text" id="review" name="review" value={reviewtext} onChange={(e) => setReviewtext(e.target.value)} placeholder="please enter your review..." />
+                <div className="slidecontainer">
+                  <input 
+                    className="rate" 
+                    id="rate"
+                    type="range" 
+                    min="1" 
+                    max="10" 
+                    step=".5"                            
+                  />
+                </div>
               </div>
             )
             : <p>.</p>
+        }
+        {
+          rate1
+            ? <button type="button" onClick={() => saveRate(movie.id, movie.title)}>{isLoading ? '...' : 'Save'}</button>
+            : <button type="button" onClick={() => setRate1(movie.id, movie.title)}>Rate</button>
         }
       </>
     )
@@ -85,7 +94,7 @@ const MovieCard = ({ movie }) => {
     <div className="movie-card">
 
       <img src={`https://image.tmdb.org/t/p/w185/${movie?.poster_path}`} alt="poster" />
-      <h4>{movie?.title}</h4>
+      <h4 className="movie-title">{movie?.title}</h4>
 
 
       {User().isLoggedIn

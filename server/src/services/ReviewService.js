@@ -2,14 +2,18 @@ const Review = require('../models/ReviewModel')
 
 
 
-exports.findByUser = async (req, res, next) => Review
-  .find({ author: res.locals.gUser.sub })
+exports.findByUser = async (req, res, next) =>  {
+  
+  console.log('session user:',req.locals.gUser)
+  Review
+  .find({ author: req.locals.gUser.sub })
   .then((x) => res.json(x) )
   .catch((e) => {
     res.status(404)
     return next(e)
   })
 
+}
 
 exports.addReview = async (req, res, next) => {
 

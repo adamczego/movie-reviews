@@ -5,22 +5,41 @@ import MovieList from '../../components/Movie/MovieList'
 
 
 
-const Movies = () => {
+const Movies = ( { whatWeShow } ) => {
 
   const { topRatedMovies } = M()
+  const { nowPlayingMovies } = M()
+  let data = null
+
+  if ( whatWeShow === 'Top rated movies' ) {
+    data = topRatedMovies?.results
+  }
+  
+  if ( whatWeShow === 'Newest movies' ) {
+    data = nowPlayingMovies?.results 
+    // miért nincs adat ?
+  }
+  if ( whatWeShow === 'Reviews' ) {
+    data = nowPlayingMovies?.results 
+    // miért nincs adat ?
+  }
 
   // console.log('Movies topRatedMovies=', topRatedMovies)
-  if (!topRatedMovies) {
+  if (!(topRatedMovies || nowPlayingMovies ) ) {
     return (' no movies')
   }
   return (
     <div>
-      <H1>
-        Movies
-      </H1>
+      { whatWeShow === 'Reviews' 
+        && (
+        <div className="searchPanel">
+          <input placeholder="enter movie title..." />
+          <button type="button">Search</button>  
+        </div>
+        )}
       <MovieList
-        title="Top rated movies"
-        movies={topRatedMovies.results}
+        title={whatWeShow}
+        movies={data}
       />
     </div>
   )
