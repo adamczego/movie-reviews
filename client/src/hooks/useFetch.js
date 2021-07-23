@@ -16,7 +16,7 @@ const useFetch = () => {
         credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Origin': 'http://ccmovieserver.sloppy.zone',
         },
         body: JSON.stringify(body),
       },
