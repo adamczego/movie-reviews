@@ -6,7 +6,8 @@ const jwt = require('jsonwebtoken')
 const oauth2Client = new google.auth.OAuth2(
     process.env.GOOGLE_CLIENT_ID,
     process.env.GOOGLE_CLIENT_SECRET,
-    `${process.env.SERVER_HOST}${process.env.GOOGLE_LOGIN_REDIRECT_ENDPOINT}`
+    'https://ccmovieserver.sloppy.zone/api/auth/g_login'
+    // `${process.env.SERVER_HOST}${process.env.GOOGLE_LOGIN_REDIRECT_ENDPOINT}`
 )
 
 const scopes = [
@@ -20,6 +21,7 @@ exports.getGLoginLink = (req, res) => {
     access_type: 'offline',
     scope: scopes,
   })
+  console.log(url)
   res.json({ gLoginLink: url })
 }
 
