@@ -25,6 +25,10 @@ const ReviewSchema = new mongoose.Schema({
     type: String,
     required: 'no_movie_title',
   },
+  poster_path: {
+    type: String,
+    required: 'no_poster_path',
+  },
 })
 
 

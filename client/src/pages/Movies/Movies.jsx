@@ -4,6 +4,7 @@ import { Movies as M } from '../../hooks/useMovies'
 
 import { H1 } from '../../components/styledComps/Typography'
 import MovieList from '../../components/Movie/MovieList'
+import { Reviews } from '../../hooks/useReviews'
 
 
 
@@ -16,6 +17,10 @@ const Movies = () => {
 
   return (
     <MoviesWrapper>
+
+      <H1>
+        Movies
+      </H1>
 
       <MovieSearchBar
         // onChange = { handleSearch }
@@ -31,10 +36,6 @@ const Movies = () => {
         // loadNextPage = { () => loadNextPage('search', 'searchTerm') }
       />
 
-
-      <H1>
-        Movies
-      </H1>
       <MovieList
         title = "Top rated movies"
         movies = { topRatedMovies }

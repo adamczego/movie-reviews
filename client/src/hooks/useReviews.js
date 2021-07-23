@@ -29,18 +29,24 @@ const useReviews = (user) => {
   const saveReview = async () => doFetch({
     endpoint: '/api/reviews',
     method: 'POST',
-    body: { review: reviewData },
+    body: {
+      review: {
+        ...reviewData,
+        author: user.userData.sub,
+      }, 
+    },
   }).then(() => loadUserReviews())
 
-  const searchReviews = ({ prop, val }) => {
-
-  }
+  const searchReviews = (val) => doFetch({
+    endpoint: `/api/reviews/search/${val}`,
+    method: 'GET',
+  }).then((rs) => {
+    console.log({ rs })
+    return (rs.msg ? null : setSearchedReviews(rs))
+  })
 
   // for handling review input change
-  const handleReviewDataChange = (e) => setReviewData({
-    ...reviewData,
-    [e.target.id]: e.target.value,
-  })
+  const handleReviewDataChange = (data) => setReviewData(data)
 
 
   useEffect(() => {
@@ -50,11 +56,15 @@ const useReviews = (user) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ user.isLoggedIn ])
 
+  useEffect(() => {
+    console.log(searchedReviews)
+  }, [ searchReviews ])
 
   return {
     reviewData,
     userReviews,
     searchedReviews,
+    searchReviews,
     saveReview,
     handleReviewDataChange,
   }

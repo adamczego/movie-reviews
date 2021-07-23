@@ -58,6 +58,10 @@ const GlobalStyle = createGlobalStyle`
     font-size: ${({ baseSize }) => baseSize && baseSize};
     font-family: 'Helvetica Neue', serif;
   }
+  
+  * {
+    box-sizing: border-box;
+  }
 `
 
 

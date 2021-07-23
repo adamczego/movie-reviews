@@ -11,24 +11,23 @@ import { H1 } from '../../components/styledComps/Typography'
 const Reviews = () => {
 
   const {
-    reviewData, userReviews, searchedReviews, saveReview, handleReviewDataChange, searchReview,
+    reviewData, userReviews, searchedReviews, saveReview, handleReviewDataChange, searchReviews,
   } = R()
 
 
   return (
     <ReviewsWrapper>
 
-      <ReviewSearchBar
-        onChange = { (e) => searchReview(e.target.value, 1) }
-        type = "text"
-        id = "movie-title"
-        placeholder = "search for a movie"
-      />
-
-
       <H1>
         My reviews
       </H1>
+
+      <ReviewSearchBar
+        onChange = { (e) => searchReviews(e.target.value) }
+        type = "text"
+        id = "movie-title"
+        placeholder = "search for a reviewed movie"
+      />
 
       <ReviewList
         title = "searched"

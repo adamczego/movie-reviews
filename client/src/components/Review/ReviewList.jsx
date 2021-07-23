@@ -11,19 +11,22 @@ const ReviewList = ({ movies, title }) => (
       { title }
       {' '}
     </H1>
-    <ReviewListWrapper>
+
+    <ReviewListWrapper isPresent = { movies?.length > 0 }>
       {
-        movies?.map((m) => (
-          <ReviewCard key={m.id} movie={m} />
-        ))
+            movies?.map((m) => (
+              <ReviewCard key={m.id} movie={m} />
+            ))
       }
     </ReviewListWrapper>
+    )
+
   </>
 )
 
 const ReviewListWrapper = styled.div`
   //margin: 0 4rem;
-  display: flex;
+  display: ${({ isPresent }) => (isPresent ? 'flex' : 'none')};
   overflow: auto;
   white-space: nowrap;
   height: 40vh;
