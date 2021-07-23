@@ -12,7 +12,7 @@ const clientPort = process.env.CLIENT_PORT
 const app = express()
 
 app.use(cors({
-  origin: `${clientHost}:${clientPort}`,
+  origin: `${clientHost}`,
   credentials: true,
 }))
 app.use(cookieParser())
