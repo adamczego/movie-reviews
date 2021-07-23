@@ -10,9 +10,9 @@ before_install:
   - cd server && docker build . -t movie_review_server
   - docker tag movie_review_server $DOCKER_USER/movie_review_server
   - docker push $DOCKER_USER/movie_review_server
+  - cd ..
   - curl -k -L https://files.sloppy.io/sloppy-`uname -s`-`uname -m` > sloppy
   - chmod +x sloppy
-  - cd ..
   - ./sloppy change -v docker_image:"$DOCKER_USER/movie_review_server" -v domain:"ccmovieserver.sloppy.zone" sloppy.json
 
   - export CI=false
