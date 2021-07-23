@@ -34,5 +34,5 @@ exports.login = (req, res, next) => {
     secure: true,
   })
 
-  res.redirect(`${process.env.CLIENT_HOST}:${process.env.CLIENT_PORT}/`)
+  res.redirect(`${process.env.CLIENT_HOST}`)
 }
