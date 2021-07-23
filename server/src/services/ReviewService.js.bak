@@ -58,7 +58,6 @@ exports.addReview = async (req, res, next) => {
         poster_path: req.body.review.poster_path,
         movie_id: req.body.review.movieID,
         title: req.body.review.movieTitle,
-        created_at: (new Date),
       },
       {
         new: true,

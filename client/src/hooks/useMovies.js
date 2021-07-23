@@ -12,15 +12,8 @@ const useMovies = () => {
 
   const [ topRatedMovies, setTopRatedMovies ] = useState()
   const [ nowPlayingMovies, setNowPlayingMovies ] = useState()
-  const [ allReviews, setAllReviews ] = useState()
-
   const [ currentSearchResults, setCurrentSearchResults ] = useState(null)
 
-
-  const getAllReviews = async (page) => doFetch({
-    endpoint: `/api/reviews/`,
-    method: 'GET',
-  }).then(setAllReviews)
 
   const getTopRatedMovies = async (page) => doFetch({
     endpoint: `/api/movies/top_rated?p=${page}`,
@@ -46,11 +39,9 @@ const useMovies = () => {
   useEffect(() => {
     getTopRatedMovies()
     getNowPlayingMovies()
-    getAllReviews()
     searchMovie('a', 500)
 
     console.log('topRatedMovies=', topRatedMovies)
-    console.log('allReviews=', allReviews)
     console.log('nowPlayingMovies=', nowPlayingMovies)
     console.log('currentSearchResults=', currentSearchResults)
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -60,11 +51,9 @@ const useMovies = () => {
   return {
     topRatedMovies,
     nowPlayingMovies,
-    allReviews,
     currentSearchResults,
     getMovieInfo,
     searchMovie,
-    getAllReviews,
   }
 
 }
@@ -77,7 +66,6 @@ const Movies = () => useContext(MoviesC)
 
 
 export {
-
   useMovies,
   MoviesC,
   Movies,

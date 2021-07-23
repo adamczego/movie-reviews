@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Movies from '../Movies/Movies'
 
 const Dashboard = () => {
@@ -14,7 +14,9 @@ const Dashboard = () => {
         <button type="button" onClick={ () => setShow('Reviews') }>Reviews</button>  
 
       </div>
+    
       <Movies whatWeShow = { show } />
+ 
     </div>
   )
 }

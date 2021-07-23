@@ -1,6 +1,8 @@
-
+import { useEffect } from 'react'
 import { useState } from 'react'
 import { User } from '../../hooks/useUser'
+import { Movies as M } from '../../hooks/useMovies'
+import { Reviews as R } from '../../hooks/useReviews'
 
 const MovieCard = ({ movie }) => {
 
@@ -11,18 +13,26 @@ const MovieCard = ({ movie }) => {
   const [isLoading, setIsLoading] = useState(null)
   const [author, setAuthor] = useState( { id: User().userData?.sub, name: User().userData?.name } ) 
   
-  console.log('rate1=', rate1)
+  const { getAllReviews } = R()
+      
+  // ujra lekérjük a review-okat hogy megjelenjen amit elmentettünk éppen.
+  useEffect( () => {
+    getAllReviews()
+  // eslint-disable-next-line react-hooks/exhaustive-deps  
+  }, [ ])
+
+
 
   const RateMovie = () => {
     const saveRate = async () => {
-      console.log('rate1=', rate1)
+ 
       setIsLoading(true)
 
       const review = {
-        body: reviewtext,
+        body: document.getElementById('review').value,
         author: author.id,  
         author_name: author.name,
-        rate: rateNo,
+        rate: document.getElementById('rate').value,
         movieID: rate1.movieID,
         poster_path: rate1.poster_path,
         movieTitle: rate1.movieTitle,
@@ -44,6 +54,7 @@ const MovieCard = ({ movie }) => {
           body: JSON.stringify({ review }),
         },
       )
+  
 
       setIsLoading(false)
       setReviewtext('')
@@ -63,7 +74,7 @@ const MovieCard = ({ movie }) => {
           rate1
             ? (
               <div className="rate-window">
-                <textarea key={generateKey()} type="text" id="review" name="review" value={reviewtext} onChange={(e) => setReviewtext(e.target.value)} placeholder="please enter your review..." />
+                <textarea key={generateKey()} type="text" id="review" name="review" placeholder="please enter your review..." />
                 <div className="slidecontainer">
                   <input 
                     className="rate" 
