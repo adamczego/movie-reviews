@@ -10,7 +10,7 @@ const useFetch = () => {
   const doFetch = async ({ endpoint, method, body }) => {
     setIsLoading(true)
     const res = await fetch(
-      `http://localhost:8080${endpoint}`,
+      `http://ccmovieserver.sloppy.zone:8080${endpoint}`,
       {
         method,
         credentials: 'include',
