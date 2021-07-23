@@ -8,4 +8,4 @@ RUN rm -rf ./*
 # Copy static assets from builder stage
 COPY build .
 
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+# ENTRYPOINT ["nginx", "-g", "daemon off;"]
