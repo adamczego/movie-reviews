@@ -10,13 +10,13 @@ const useFetch = () => {
   const doFetch = async ({ endpoint, method, body }) => {
     setIsLoading(true)
     const res = await fetch(
-      `http://ccmovieserver.sloppy.zone:8080${endpoint}`, 
+      `https://ccmovieserver.sloppy.zone:8080${endpoint}`, 
       {
         method,
         credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': 'http://ccmovieserver.sloppy.zone',
+          'Access-Control-Allow-Origin': 'https://ccmovieserver.sloppy.zone',
         },
         body: JSON.stringify(body),
       },
