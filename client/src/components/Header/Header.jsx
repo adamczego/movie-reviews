@@ -18,7 +18,7 @@ const Header = () => {
         <Logo>
           Movie review app
         </Logo>
-
+ 
         <UserInfo>
 
           <UserNameDisplay>{ userData?.name }</UserNameDisplay>
