@@ -9,7 +9,7 @@ import useFetch from './useFetch'
 const useReviews = (user) => {
 
   const { doFetch } = useFetch()
-  const [ allReviews, setAllReviews ] = useState()
+
   const [ reviewData, setReviewData ] = useState({
     body: 'here is some review for a movie',
     author: '108119665129465060839',
@@ -24,11 +24,6 @@ const useReviews = (user) => {
   // const [ searchedReviews, setSearchedReviews ] = useState(null)
 
 
-  const getAllReviews = async (page) => doFetch({
-    endpoint: `/api/reviews/`,
-    method: 'GET',
-  }).then(setAllReviews)
-
   const loadUserReviews = async () => doFetch({
     endpoint: '/api/reviews/',
     method: 'GET',
@@ -38,7 +33,7 @@ const useReviews = (user) => {
     endpoint: '/api/reviews',
     method: 'POST',
     body: { review: reviewData },
-  }).then(() => getAllReviews())
+  }).then(() => loadUserReviews())
 
   // const searchReviews = ({ prop, val }) => {
 
@@ -54,7 +49,6 @@ const useReviews = (user) => {
   useEffect(() => {
     if ( user.isLoggedIn ) {
       loadUserReviews()
-      getAllReviews()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ user.isLoggedIn ])
@@ -62,8 +56,6 @@ const useReviews = (user) => {
 
   return {
     reviewData,
-    allReviews,
-    getAllReviews,
     setReviewData,
     userReviews,
     saveReview,

@@ -43,6 +43,18 @@
   cursor: pointer;
 }
 
+#ratee {
+  background: -webkit-gradient(linear, left top, right top, from(#82CFD0), color-stop(50%, #82CFD0), color-stop(50%, #fff), to(#fff));
+  background: linear-gradient(to right, #82CFD0 0%, #82CFD0 50%, #fff 50%, #fff 100%);
+  border: solid 1px #82CFD0;
+  border-radius: 8px;
+  height: 7px;
+  outline: none;
+  -webkit-transition: background 450ms ease-in;
+  transition: background 450ms ease-in;
+  -webkit-appearance: none;
+}
+
 .slidecontainer {
   width: 100%;
 }
@@ -77,103 +89,5 @@
   height: 25px;
   background: #04AA6D;
   cursor: pointer;
-}
-
-.authorFilter {
-  border: none;
-  margin: 0 5px;
-  border-radius: 10px;
-}
-
-.authorFilter:hover {
-  background-color: lightskyblue;
-}
-
-.review-flex {
-  vertical-align: text-top;
-}
-
-.review {
-  position: relative;
-  width: 100%;
-  margin: 5px 0;
-  padding: 5px;
-  border: 1px lightseagreen solid;
-  border-radius: 4px;
-  background-color: #cbf068;
-}
-
-.review .author {
-  padding: 1px;
-  position: absolute;
-  top: -3px;
-  left: -1px;
-  background-color: lightseagreen;
-}
-
-.review .created_at {
-  padding: 1px;
-  font-size: .7em;
-  position: absolute;
-  right: -1px;
-  bottom: -3px;
-  background-color: lightseagreen;
-}
-
-.review-movie {
-  margin: 10px;
-  padding: 10px;
-  width: 100px;
-  border-radius: 8px;
-  border: 1px solid lightgray;
-}
-
-.review-movie img {
-  border-radius: 7px;
-  width: 50%;
-}
-
-.review-card {
-  display: block;
-  margin: 10px;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid lightgray;
-}
-
-.review-card:hover {
-  background-color: lightgreen;
-}
-
-.review-card .reviews {
-  display: inline-block;
-  width: calc(100% - 150px);
-  min-width: 100px;
-}
-
-.review-card .movie-details {
-  display: inline-block;
-  border-right: 1px solid black;
-  padding-right: 10px;
-  margin-right: 10px;
-  width: 100px;
-}
-
-.review-card .movie-title {
-  font-size: 2em;
-  margin: 5px 0;
-  line-height: 1.1em;
-}
-
-.review-card img {
-  border-radius: 7px;
-  width: 100px;
-}
-
-@media (min-width: 800px) {
-  .revieww-card .reviews {
-    width: 95%;
-    min-width: none;
-  }
 }
 /*# sourceMappingURL=App.css.map */

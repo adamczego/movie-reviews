@@ -16,10 +16,9 @@ exports.findByUser = async (req, res, next) =>  {
 }
 exports.getAllReviews = async (req, res, next) =>  {
   
-  //console.log('all reviews session user:',req.locals)
+  console.log('all reviews session user:',req.locals)
   Review
   .find({ })
-  .sort('movie_id')
   .then((x) => res.json({results:x}) )
   .catch((e) => {
     res.status(404)
@@ -58,7 +57,6 @@ exports.addReview = async (req, res, next) => {
         poster_path: req.body.review.poster_path,
         movie_id: req.body.review.movieID,
         title: req.body.review.movieTitle,
-        created_at: (new Date),
       },
       {
         new: true,
